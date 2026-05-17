@@ -1,0 +1,7 @@
+# Force HTTPS and canonical host
+http://electricprecisionlabs.co.uk/* https://electricprecisionlabs.co.uk/:splat 301!
+http://www.electricprecisionlabs.co.uk/* https://electricprecisionlabs.co.uk/:splat 301!
+https://www.electricprecisionlabs.co.uk/* https://electricprecisionlabs.co.uk/:splat 301!
+
+# SPA fallback for client-side routing
+/* /index.html 200

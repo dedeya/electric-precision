@@ -1,0 +1,70 @@
+SCADA, Automation & Energy Management Solutions
+
+About Electric Precision Labs
+
+Electric Precision Labs is a technology solutions company specialising
+in SCADA systems, substation automation, energy management, and
+operational technology (OT) cybersecurity for critical infrastructure
+and operational environments. We design and deliver reliable monitoring,
+control, and secure system architectures that support industry-standard
+protocols and integrate with both legacy and modern infrastructure.
+
+Our Services
+
+SCADA & Control Systems
+
+We deliver SCADA and control system solutions that provide real-time
+visibility and secure operational control of critical assets, including
+centralised and remote monitoring, data acquisition, and
+operator-friendly Human Machine Interfaces (HMIs).
+
+Substation Automation Solutions
+
+Our substation automation solutions support transmission and
+distribution networks using Remote Terminal Units (RTUs) and HMIs to
+enable efficient monitoring and control.
+
+Industry-Standard Protocol Support
+
+Our systems support IEC 61850, DNP3, IEC 101/104, and Modbus protocols
+to ensure interoperability across multi-vendor environments and existing
+infrastructure.
+
+Energy Management System (EMS) Solutions
+
+We provide local, remote, and cloud-based energy management solutions
+including revenue metering, power quality metering, and statistical
+metering to support operational and commercial requirements.
+
+OT Cybersecurity Architecture Design & Vulnerability Assessment
+
+Electric Precision Labs provides OT cybersecurity services focused on
+protecting critical control systems and operational technology
+environments. Our services include secure OT network architecture design
+and vulnerability assessments aligned with industrial and utility
+environments. We help organisations identify security risks, improve
+system resilience, and support compliance with cybersecurity best
+practices for SCADA, substations, and energy systems.
+
+Building Management Systems (BMS)
+
+As an extension of our automation expertise, we offer Building
+Management System solutions to improve monitoring, control, and
+operational efficiency of building services.
+
+Sectors We Support
+
+Utilities and power networks
+Water and wastewater infrastructure
+Rail and transport systems
+Industrial facilities
+Commercial and operational buildings
+
+Why Electric Precision Labs
+
+Specialist expertise in SCADA, automation, energy systems, and OT
+cybersecurity
+Support for recognised international communication standards
+Integration with existing and legacy infrastructure
+Local, remote, and cloud-based solution delivery
+Security-focused system design for critical infrastructure

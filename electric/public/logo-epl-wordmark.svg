@@ -1,0 +1,38 @@
+<svg width="1600" height="420" viewBox="0 0 1600 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoWordmarkTitle logoWordmarkDesc">
+  <title id="logoWordmarkTitle">Electric Precision Labs Wordmark Logo</title>
+  <desc id="logoWordmarkDesc">Horizontal company logo with symbol and wordmark for wide layouts and documents.</desc>
+
+  <defs>
+    <linearGradient id="wmBg" x1="22" y1="22" x2="362" y2="362" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E314A"/>
+      <stop offset="1" stop-color="#081C2D"/>
+    </linearGradient>
+    <linearGradient id="wmStroke" x1="58" y1="48" x2="326" y2="338" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C4DB"/>
+      <stop offset="1" stop-color="#F3B735"/>
+    </linearGradient>
+    <linearGradient id="wmBolt" x1="160" y1="100" x2="250" y2="276" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9D26D"/>
+      <stop offset="1" stop-color="#F3B735"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="16" y="16" width="352" height="352" rx="86" fill="url(#wmBg)"/>
+  <path d="M192 60L276 108V204L192 252L108 204V108L192 60Z" stroke="url(#wmStroke)" stroke-width="16"/>
+  <circle cx="192" cy="60" r="9" fill="#22C4DB"/>
+  <circle cx="276" cy="108" r="9" fill="#22C4DB"/>
+  <circle cx="276" cy="204" r="9" fill="#22C4DB"/>
+  <circle cx="192" cy="252" r="9" fill="#22C4DB"/>
+  <circle cx="108" cy="204" r="9" fill="#22C4DB"/>
+  <circle cx="108" cy="108" r="9" fill="#22C4DB"/>
+  <path d="M218 88L156 184H202L170 276L246 168H200L218 88Z" fill="url(#wmBolt)"/>
+
+  <path d="M78 320H112V334H78V320Z" fill="#F3B735"/>
+  <path d="M124 306H158V334H124V306Z" fill="#F3B735"/>
+  <path d="M170 320H204V334H170V320Z" fill="#F3B735"/>
+
+  <text x="424" y="184" fill="#F5FBFF" font-family="Sora, Manrope, Segoe UI, sans-serif" font-size="86" font-weight="700" letter-spacing="4">ELECTRIC</text>
+  <text x="424" y="264" fill="#D6E5F4" font-family="Sora, Manrope, Segoe UI, sans-serif" font-size="86" font-weight="700" letter-spacing="4">PRECISION LABS</text>
+  <rect x="424" y="286" width="610" height="8" rx="4" fill="#22C4DB"/>
+  <text x="424" y="338" fill="#9EB5CA" font-family="Manrope, Segoe UI, sans-serif" font-size="36" font-weight="600" letter-spacing="2">SCADA · AUTOMATION · ENERGY MANAGEMENT · OT CYBERSECURITY</text>
+</svg>
