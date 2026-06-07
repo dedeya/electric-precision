@@ -1,16 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "http://www.electricprecisionlabs.co.uk/:path*",
-      "destination": "https://electricprecisionlabs.co.uk/:path*",
-      "permanent": true
-    },
-    {
-      "source": "https://www.electricprecisionlabs.co.uk/:path*",
-      "destination": "https://electricprecisionlabs.co.uk/:path*",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",

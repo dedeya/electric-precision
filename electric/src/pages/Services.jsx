@@ -1,31 +1,51 @@
 import styled from "styled-components";
+import sectorsImg from "../../images/Sectors-We-Support'.jpeg";
+import clientsGainImg from "../../images/what-clients-gain.jpeg";
 
 const Header = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 `;
 
 const Intro = styled.article`
-  padding: 1.25rem;
+  max-width: 720px;
+  padding: 0.5rem 1rem;
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 0;
+  }
 `;
 
 const Cover = styled.div`
+  width: 100%;
   overflow: hidden;
   border-radius: 18px;
   border: 1px solid rgba(126, 164, 194, 0.3);
   img {
     width: 100%;
-    height: 100%;
-    min-height: clamp(420px, 50vh, 580px);
+    height: clamp(280px, 40vw, 500px);
     object-fit: cover;
     object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
   }
+  &:hover img {
+    transform: scale(1.03);
+  }
+`;
+
+const HeaderText = styled.p`
+  max-width: 720px;
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0 1rem;
 `;
 
 const ServicesGrid = styled.section`
@@ -113,12 +133,8 @@ const protocols = ["IEC 61850", "DNP3", "IEC 101/104", "Modbus"];
 const Services = () => (
   <main>
     <Header className="reveal">
-      <Intro className="glass-card">
+      <Intro>
         <h1>Our Services</h1>
-        <p>
-          We build and secure intelligent operational environments across power, water,
-          transport, and industrial facilities, with a focus on measurable reliability.
-        </p>
       </Intro>
       <Cover className="parallax-media reveal reveal-delay-1">
         <img
@@ -128,6 +144,10 @@ const Services = () => (
           decoding="async"
         />
       </Cover>
+      <HeaderText className="reveal reveal-delay-2">
+        We build and secure intelligent operational environments across power, water,
+        transport, and industrial facilities, with a focus on measurable reliability.
+      </HeaderText>
     </Header>
 
     <ServicesGrid>
@@ -183,8 +203,8 @@ const Services = () => (
     <ServiceVisuals className="reveal reveal-delay-2">
       <ServiceVisual className="parallax-media">
         <img
-          src="/assets/about-control-room.jpg"
-          alt="Electrical control room switchgear"
+          src={sectorsImg}
+          alt="Sectors we support"
           loading="lazy"
           decoding="async"
         />
@@ -192,8 +212,8 @@ const Services = () => (
       </ServiceVisual>
       <ServiceVisual className="parallax-media">
         <img
-          src="/assets/grid-control-operator.jpg"
-          alt="Operator in control room"
+          src={clientsGainImg}
+          alt="What clients gain"
           loading="lazy"
           decoding="async"
         />
@@ -201,8 +221,8 @@ const Services = () => (
       </ServiceVisual>
       <ServiceVisual className="parallax-media">
         <img
-          src="/assets/grid-monitoring-room.jpg"
-          alt="Monitoring station and display wall"
+          src={sectorsImg}
+          alt="Sectors we support"
           loading="lazy"
           decoding="async"
         />

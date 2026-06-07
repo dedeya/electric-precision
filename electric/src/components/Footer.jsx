@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import logoImg from "../../logo/prec_elecLogo.jpeg";
+import logoImg from "../../logo/epl-logojpeg.jpeg";
 
 const Wrap = styled.footer`
   width: min(1180px, calc(100% - 2.25rem));

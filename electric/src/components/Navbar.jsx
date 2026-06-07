@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
-import logoImg from "../../logo/prec_elecLogo.jpeg";
+import logoImg from "../../logo/epl-logojpeg.jpeg";
 
 const Nav = styled.nav`
   width: min(1180px, calc(100% - 2.25rem));
