@@ -8,7 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+# dist is intentionally tracked: Mochahost has no Node.js app configured,
+# so cPanel's .cpanel.yml deploys this pre-built output directly (no build step on the server).
 dist-ssr
 *.local
 

@@ -1,0 +1,11 @@
+Electric Precision Labs Logo Variants
+
+Files:
+- logo-epl.svg: Primary app icon/logo mark for UI and favicon use.
+- logo-epl-wordmark.svg: Horizontal lockup for headers, decks, and social banners.
+- logo-epl-mono.svg: Monochrome variant for print/emboss/low-ink use.
+
+Quick guidance:
+- Keep clear space around the logo equal to at least the width of one hex node.
+- Avoid stretching logos; scale proportionally.
+- Use the monochrome variant when color contrast is insufficient.

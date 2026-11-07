@@ -1,0 +1,36 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Electric Precision Labs Logo</title>
+  <desc id="logoDesc">A hexagonal energy mark with a lightning bolt and circuit nodes, representing precision electrical intelligence.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="74" y1="72" x2="438" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E314A"/>
+      <stop offset="1" stop-color="#081C2D"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="110" y1="96" x2="402" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C4DB"/>
+      <stop offset="1" stop-color="#F3B735"/>
+    </linearGradient>
+    <linearGradient id="bolt" x1="217" y1="152" x2="320" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9D26D"/>
+      <stop offset="1" stop-color="#F3B735"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="56" y="56" width="400" height="400" rx="104" fill="url(#bg)"/>
+
+  <path d="M256 108L352 163V273L256 328L160 273V163L256 108Z" stroke="url(#stroke)" stroke-width="20"/>
+
+  <circle cx="256" cy="108" r="11" fill="#22C4DB"/>
+  <circle cx="352" cy="163" r="11" fill="#22C4DB"/>
+  <circle cx="352" cy="273" r="11" fill="#22C4DB"/>
+  <circle cx="256" cy="328" r="11" fill="#22C4DB"/>
+  <circle cx="160" cy="273" r="11" fill="#22C4DB"/>
+  <circle cx="160" cy="163" r="11" fill="#22C4DB"/>
+
+  <path d="M286 146L214 258H268L230 366L318 238H264L286 146Z" fill="url(#bolt)"/>
+
+  <path d="M125 404H163V420H125V404Z" fill="#F3B735"/>
+  <path d="M175 388H213V420H175V388Z" fill="#F3B735"/>
+  <path d="M225 404H263V420H225V404Z" fill="#F3B735"/>
+</svg>
