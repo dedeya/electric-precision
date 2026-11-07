@@ -1107,9 +1107,11 @@ import{n as e}from"./rolldown-runtime-jpDsebLB.js";import{i as t,n,r,t as i}from
   @media (max-width: 980px) {
     grid-area: links;
     width: 100%;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.4rem;
     border-radius: 14px;
-    justify-content: center;
     display: ${e=>e.$open?`flex`:`none`};
   }
 `,St=r.div`
@@ -1269,6 +1271,18 @@ import{n as e}from"./rolldown-runtime-jpDsebLB.js";import{i as t,n,r,t as i}from
     color: #e8edf5;
     border-color: rgba(255, 255, 255, 0.14);
     background: rgba(30, 114, 200, 0.18);
+  }
+
+  @media (max-width: 980px) {
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 `,Tt=r(l)`
   display: inline-flex;
