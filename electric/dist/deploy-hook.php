@@ -31,14 +31,34 @@ function logLine($logFile, $message) {
     @file_put_contents($logFile, '[' . date('c') . '] ' . $message . "\n", FILE_APPEND);
 }
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    // Simple reachability check; reveals nothing sensitive.
-    respond(200, 'Deploy hook is active. Use a GitHub webhook (POST) to trigger it.');
-}
-
 $homeDir    = dirname(rtrim($_SERVER['DOCUMENT_ROOT'], '/'));
 $configFile = $homeDir . '/.deploy-config.json';
 $logFile    = $homeDir . '/deploy.log';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    if (($_GET['debug'] ?? '') === '1') {
+        // Read-only, non-secret diagnostic: never exposes the secret value itself.
+        $rawConfig  = @file_get_contents($configFile);
+        $decoded    = $rawConfig !== false ? json_decode($rawConfig, true) : null;
+        header('Content-Type: application/json');
+        echo json_encode([
+            'documentRoot'     => $_SERVER['DOCUMENT_ROOT'],
+            'homeDir'          => $homeDir,
+            'configFile'       => $configFile,
+            'configFileExists' => file_exists($configFile),
+            'configReadable'   => $rawConfig !== false,
+            'configValidJson'  => $decoded !== null,
+            'configHasSecret'  => !empty($decoded['secret']),
+            'configHasRepo'    => !empty($decoded['repoPath']),
+            'configHasDocRoot' => !empty($decoded['docRoot']),
+            'shellExecEnabled' => function_exists('shell_exec')
+                && !in_array('shell_exec', array_map('trim', explode(',', (string) ini_get('disable_functions'))), true),
+        ], JSON_PRETTY_PRINT) . "\n";
+        exit;
+    }
+    // Simple reachability check; reveals nothing sensitive.
+    respond(200, 'Deploy hook is active. Use a GitHub webhook (POST) to trigger it.');
+}
 
 $config = json_decode((string) @file_get_contents($configFile), true);
 if (!$config || empty($config['secret']) || empty($config['repoPath']) || empty($config['docRoot'])) {
