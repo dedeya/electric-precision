@@ -69,10 +69,27 @@ This account has no Node.js environment configured in cPanel, so the server cann
    npm run build
    ```
 2. Commit the updated `electric/dist/` output along with your source changes, then push to `main`.
-3. In cPanel → **Git™ Version Control** → manage the `electric-precision` repo → **Pull or Deploy** tab:
+3. Deployment then happens automatically via a GitHub webhook (see below). If the webhook is ever disabled/broken, fall back to manual deploy in cPanel → **Git™ Version Control** → manage the `electric-precision` repo → **Pull or Deploy** tab:
    - **Update from Remote** (pulls the latest commit into `/home/electricprecisio/repositories/electric-precision`)
    - **Deploy HEAD Commit** (runs `.cpanel.yml`, which copies `electric/dist/` into `/home/electricprecisio/public_html/`)
-4. There is currently no webhook/cron connecting GitHub pushes to cPanel — both steps above must be triggered manually each time.
+
+## Automatic Deployment (GitHub Webhook → Mochahost)
+Pushes to `main` automatically deploy via `electric/public/deploy-hook.php` (ships to `/deploy-hook.php` in the live document root). A GitHub webhook POSTs to this endpoint on every push; the script verifies the request, then runs the same `git fetch && git reset --hard origin/main && cp -R electric/dist/.` steps that the manual cPanel deploy performs.
+
+**One-time server setup** (already done for this account, documented here in case it needs to be recreated):
+1. Create a file **outside** the web root at `/home/electricprecisio/.deploy-config.json` (never commit this — it holds the webhook secret):
+   ```json
+   {
+     "secret": "<GitHub webhook secret>",
+     "repoPath": "/home/electricprecisio/repositories/electric-precision",
+     "docRoot": "/home/electricprecisio/public_html"
+   }
+   ```
+   Restrict its permissions, e.g. `chmod 600 ~/.deploy-config.json`.
+2. A GitHub webhook is configured on this repo (Settings → Webhooks) pointing to `https://electricprecisionlabs.co.uk/deploy-hook.php`, content type `application/json`, secret matching the config file above, for `push` events only.
+3. Deployment activity is logged to `/home/electricprecisio/deploy.log` (also outside the web root) for troubleshooting.
+
+**Requirements:** the server's PHP must allow `shell_exec`. If it's disabled (`disable_functions` in php.ini), the hook responds with `500 shell_exec disabled` and logs the failure — fall back to the manual cPanel steps above in that case.
 
 ---
 
