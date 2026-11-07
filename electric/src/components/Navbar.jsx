@@ -309,7 +309,7 @@ const StyledLink = styled(NavLink)`
 
   @media (max-width: 980px) {
     width: 100%;
-    text-align: center;
+    text-align: left;
     padding: 0.85rem 1rem;
     border-radius: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
