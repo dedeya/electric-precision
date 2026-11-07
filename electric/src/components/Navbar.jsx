@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import logoImg from "../../logo/epl-logojpeg.jpeg";
@@ -34,9 +35,13 @@ const Nav = styled.nav`
   }
 
   @media (max-width: 980px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "logo toggle"
+      "links links"
+      "utility utility";
     width: min(1180px, calc(100% - 1.25rem));
-    gap: 0.72rem;
+    gap: 0.6rem;
   }
 `;
 
@@ -74,7 +79,8 @@ const Logo = styled(Link)`
   }
 
   @media (max-width: 980px) {
-    justify-self: center;
+    grid-area: logo;
+    justify-self: start;
   }
 `;
 
@@ -123,10 +129,12 @@ const NavLinks = styled.div`
   background: rgba(55, 60, 75, 0.70);
 
   @media (max-width: 980px) {
+    grid-area: links;
     width: 100%;
     flex-wrap: wrap;
     border-radius: 14px;
     justify-content: center;
+    display: ${(props) => (props.$open ? "flex" : "none")};
   }
 `;
 
@@ -138,8 +146,80 @@ const UtilityRow = styled.div`
   gap: 0.55rem;
 
   @media (max-width: 980px) {
+    grid-area: utility;
     justify-content: center;
     width: 100%;
+    display: ${(props) => (props.$open ? "flex" : "none")};
+  }
+`;
+
+const MenuToggle = styled.button`
+  display: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background: rgba(60, 67, 85, 0.80);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: #e8edf5;
+  cursor: pointer;
+
+  span {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: background 150ms ease;
+  }
+
+  span::before,
+  span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 200ms ease, top 200ms ease;
+  }
+
+  span::before {
+    top: -6px;
+  }
+
+  span::after {
+    top: 6px;
+  }
+
+  &[aria-expanded="true"] span {
+    background: transparent;
+  }
+
+  &[aria-expanded="true"] span::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  &[aria-expanded="true"] span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgba(90, 176, 240, 0.7);
+    outline: none;
+  }
+
+  @media (max-width: 980px) {
+    display: inline-flex;
+    grid-area: toggle;
   }
 `;
 
@@ -264,7 +344,30 @@ const CtaLink = styled(Link)`
   }
 `;
 
-const Navbar = () => (
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
+  const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) closeMenu();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
+
+  return (
   <>
     <svg width="0" height="0" style={{ position: 'absolute' }}>
       <defs>
@@ -277,8 +380,8 @@ const Navbar = () => (
         </filter>
       </defs>
     </svg>
-    <Nav>
-    <Logo to="/" aria-label="Go to homepage">
+    <Nav ref={navRef}>
+    <Logo to="/" aria-label="Go to homepage" onClick={closeMenu}>
       <LogoBadge>
         <LogoMark src={logoImg} alt="Electric Precision Labs logo" />
       </LogoBadge>
@@ -288,15 +391,25 @@ const Navbar = () => (
       </span>
     </Logo>
 
-    <NavLinks>
-      <StyledLink to="/">Home</StyledLink>
-      <StyledLink to="/about">About Us</StyledLink>
-      <StyledLink to="/services">Services</StyledLink>
-      <StyledLink to="/contact">Contact Us</StyledLink>
+    <MenuToggle
+      type="button"
+      aria-label={menuOpen ? "Close menu" : "Open menu"}
+      aria-expanded={menuOpen}
+      aria-controls="primary-navigation"
+      onClick={() => setMenuOpen((open) => !open)}
+    >
+      <span />
+    </MenuToggle>
+
+    <NavLinks id="primary-navigation" $open={menuOpen}>
+      <StyledLink to="/" onClick={closeMenu}>Home</StyledLink>
+      <StyledLink to="/about" onClick={closeMenu}>About Us</StyledLink>
+      <StyledLink to="/services" onClick={closeMenu}>Services</StyledLink>
+      <StyledLink to="/contact" onClick={closeMenu}>Contact Us</StyledLink>
     </NavLinks>
 
-    <UtilityRow>
-      <CtaLink to="/contact">
+    <UtilityRow $open={menuOpen}>
+      <CtaLink to="/contact" onClick={closeMenu}>
         Book Consultation
         <svg className="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M5 12h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -347,6 +460,7 @@ const Navbar = () => (
     </UtilityRow>
   </Nav>
   </>
-);
+  );
+};
 
 export default Navbar;
